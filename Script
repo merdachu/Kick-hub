@@ -1,5 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("KICK HUB", "Sentinel")
+
   -- MAIN
   local Main = Window:NewTab("Main")
   local MainSection = Main:NewSection("Main")
@@ -18,4 +19,24 @@ local Window = Library.CreateLib("KICK HUB", "Sentinel")
   end)
   MainSection:NewDropdown("Anime fighters", "DollHouse", {"Execute"}, function(v)
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/pspboy08/dollhouse/main/AFSGUI.lua')))()
+  end)
+
+  --PLAYER
+  local Player = Window:NewTab("Player")
+  local PlayerSection = Player:NewSection("Player")
+
+  PlayerSection:NewSlider("Walkspeed", "Changes the walkspeed", 250, 16, function(v)
+      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+  end)
+
+  PlayerSection:NewSlider("Jumppower", "Changes the jumppower", 250, 50, function(v)
+      game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+  end)
+
+  --Settings
+  local Settings = Window:NewTab("Settings")
+  local SettingsSection = Settings:NewSection("Settings")
+
+  SettingsSection:NewKeybind("Toggle UI", "Sets the key to toggle the ui", Enum.KeyCode.RightShift, function(v)
+    Library:ToggleUI()
   end)
